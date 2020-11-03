@@ -1,0 +1,35 @@
+<div class="container bg-image">
+  <div class="grid-container" >
+    <ng-container *ngFor="let item of puzzleData; let index = index;" >
+      <div class="item background-block-img-{{item.id}}" (click)="blockItemClicked(item, $event)">
+        {{item.id}}
+        <div class="move-handler">
+          <ng-container  *ngIf="item.id !== 16">
+            <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z"></path>
+              <path d="M0 0h24v24H0z" fill="none"></path>
+            </svg>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="action-container">
+    <div *ngIf="hasUserWon" class="winners-msg">CONGRATULATIONS!!! YOU WON</div>
+    <button mat-raised-button color="danger" (click)="restartGame()">{{btnTextDisplay}}</button>
+  </div>
+
+  <!-- SUMMARY SECTION -->
+  <ng-container *ngIf="!hasUserWon">
+    <div style="text-align: center; padding: 5px;">How to play</div>
+    <ul>
+      <li>Step 1: Select any block other than the grayed out block on the center icon. Notice the block gets highlighted </li> <br>
+      <li>Step 2: Click on the red block, to drop your block into the empty space </li> <br> 
+      <li>Step 3: Get each block-image into its respective block  </li> <br>
+    </ul>
+    <div style="text-align: center;">May the best click win!</div>
+  </ng-container>
+ 
+</div>
+
